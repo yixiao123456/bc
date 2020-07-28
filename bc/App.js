@@ -1,33 +1,54 @@
 import React from 'react';
-import {View, Image, StyleSheet, Text, ScrollView, TextInput} from 'react-native';
+import { View, Image, StyleSheet, Text } from 'react-native';
 
 const MOCKED_MOVIES_DATA = [
     {
         title: '标题1',
         year: '2015',
-        posters: {thumbnail: 'http://i.imgur.com/UePbdph.jpg',},
+        posters: { thumbnail: 'https://img.mofyi.com/202007/2214592217132.png', },
     }
 ];
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#F5FCFF'
+    },
+    rightContainer: {
+        flex: 1
+    },
+    title: {
+        fontSize: 20,
+        marginBottom: 8,
+        textAlign: 'center'
+    },
+    year: {
+        textAlign: 'center'
     },
     thumbnail: {
         width: 53,
         height: 81
+    },
+    list: {
+        paddingTop: 20,
+        backgroundColor: '#F5FCFF'
     }
 });
 
 const App = () => {
-    const movie = MOCKED_MOVIES_DATA;
+    const movie = MOCKED_MOVIES_DATA[0];
     return (
         <View style={styles.container}>
-            <Text>{movie.title}</Text>
-            <Text>{movie.year}</Text>
-            <Image source={{uri: movie.posters.thumbnail}}/>
+            <Image
+                source={{ uri: movie.posters.thumbnail }}
+                style={styles.thumbnail}
+            />
+            <View style={styles.rightContainer}>
+                <Text style={styles.tilte}>{movie.title}</Text>
+                <Text style={styles.year}>{movie.year}</Text>
+            </View>
         </View>
     );
 };
